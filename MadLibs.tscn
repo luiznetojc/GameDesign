@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://MadLibs.gd" type="Script" id=1]
+[ext_resource path="res://gfx/blackboard.jpg" type="Texture" id=2]
+[ext_resource path="res://gfx/Feltpen.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gfx/blue_button12.png" type="Texture" id=4]
+[ext_resource path="res://gfx/blue_button11.png" type="Texture" id=5]
+[ext_resource path="res://Historia.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[node name="MadLibs" type="Control"]
+anchor_right = 0.076
+anchor_bottom = 0.068
+margin_right = 0.175995
+margin_bottom = 0.199997
+script = ExtResource( 1 )
+
+[node name="Fundo" type="TextureRect" parent="."]
+anchor_right = 13.115
+anchor_bottom = 14.732
+margin_right = 0.0299683
+margin_bottom = -0.0120239
+texture = ExtResource( 2 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 13.141
+anchor_bottom = 14.707
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Texto" type="Label" parent="VBoxContainer"]
+margin_top = 220.0
+margin_right = 984.0
+margin_bottom = 283.0
+custom_fonts/font = SubResource( 1 )
+text = "TAREFA MASSA"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 293.0
+margin_right = 984.0
+margin_bottom = 342.0
+alignment = 1
+
+[node name="inputJogador" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_left = 91.0
+margin_right = 791.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 700, 0 )
+
+[node name="Button" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 795.0
+margin_right = 844.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 848.0
+margin_right = 892.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+text = "Ok"
+
+[node name="Historias" type="Node" parent="."]
+
+[node name="Historia0" type="Node" parent="Historias"]
+script = ExtResource( 6 )
+perguntas = PoolStringArray( "um doce", "um sentimento reconfortante", "outro sentimento reconfortante" )
+historia = "quando estou triste, eu costumo comer %s para me sentir %s e %s"
+
+[node name="Historia1" type="Node" parent="Historias"]
+script = ExtResource( 6 )
+perguntas = PoolStringArray( "um tipo de comida exótica", "um sentimento desconhecido", "outro sentimento desconhecido" )
+historia = "eu nunca experimentei %s, mas gostaria de saber se me faria sentir %s ou %s"
+
+[node name="Historia2" type="Node" parent="Historias"]
+script = ExtResource( 6 )
+perguntas = PoolStringArray( "um lanche", "um estado emocional negativo", "outro estado emocional negativo" )
+historia = "quando eu como %s, eu costumo ficar %s e %s, mas isso não me impede de comer de novo"
+
+[node name="Historia3" type="Node" parent="Historias"]
+script = ExtResource( 6 )
+perguntas = PoolStringArray( "um prato", "um sentimento positivo", "outro sentimento positivo" )
+historia = "se eu pudesse escolher, eu comeria %s todos os dias, porque me faz sentir %s e %s"
+
+[node name="Historia4" type="Node" parent="Historias"]
+script = ExtResource( 6 )
+perguntas = PoolStringArray( "me diga uma bebida", "um estado emocional", "outro estado emocional" )
+historia = "eu gosto de %s quando estou %s porque me sinto %s"
+
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/inputJogador" to="." method="_on_inputJogador_text_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
