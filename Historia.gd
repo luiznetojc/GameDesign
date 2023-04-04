@@ -3,7 +3,7 @@ var chatgpt_request = HTTPRequest.new()
 
 func _ready():
     chatgpt_request.connect("request_completed", self, "_on_request_completed")
-    chatgpt_request.set_headers({"Authorization": "Bearer <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>"})
+    chatgpt_request.set_headers({"Authorization": "Bearer <PUTKEYAPY>"})
     chatgpt_request.set_url("https://api.openai.com/v1/engines/davinci-codex/completions")
     chatgpt_request.set_asynchronous(true)
 
